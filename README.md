@@ -12,3 +12,5 @@
 - enter the encryption key from the sender and the encrypted text to decrypt
 - click decrypt
 - click on the result to copy it
+
+note: currently openenc decryption and encryption mostly works only with openenc
