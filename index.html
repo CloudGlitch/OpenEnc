@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption and Decryption</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+    * {
+    color:#76ABAE;
+      font-family: "VT323", serif;
+  font-weight: 400;
+  font-style: normal;
+
+    }
+        body {
+            margin: 20px;
+            background-color:#222831;
+        }
+        textarea {
+            width: 60%;
+            height: 200px;
+            margin-bottom: 10px;
+            overflow:hidden;
+            resize:none;
+            padding:20px;
+            font-size:30px;
+            outline:none;
+            background-color:#31363F;
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            border-radius:10px;
+            border:none;
+        }
+        textarea[type="text"] {
+            width:60%;
+            height:30px;
+            margin-bottom: 10px;
+            padding:20px;
+            font-size:30px;
+            outline:none;
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            border-radius:10px;
+            border:none;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            margin-top: 10px;
+            width:150px;
+            height:60px;
+            font-size:23px;
+            border:none;
+            outline:none;
+            background-color:#76ABAE;
+            border-radius:10px;
+            color:#222831;
+        }
+        h1,h2{
+        font-size:40px;
+        }
+        .menu {
+         width:70px;
+         height:45px;
+         font-size:15px;
+         }
+    </style>
+</head>
+<body>
+<center>
+<h1>OpenEnc Encryption and Decryption</h1>
+
+<textarea type="text" id="key" placeholder="Enter encryption key"></textarea>
+
+<textarea id="text" placeholder="Enter text to encrypt or decrypt"></textarea>
+<br>
+<button onclick="encryptText()">Encrypt</button>
+<button onclick="decryptText()">Decrypt</button>
+
+<h2>Result:</h2>
+<textarea id="result" placeholder="Result will appear here" readonly></textarea>
+<br><br><br><br>
+<button class="menu" onclick="window.open('https://github.com/CloudGlitch/OpenEnc/blob/main/README.md')">usage</button>
+<button class="menu" style="width:120px;,height:62px;" onclick="window.open('https://cloudglitch.github.io/OpenEnc/privacy.html')">privacy policy</button>
+<button class="menu" onclick="window.open('https://github.com/CloudGlitch/OpenEnc/blob/main/license.md')">license</button>
+<button class="menu" style="width:120px;,height:62px;" onclick="window.open('https://github.com/CloudGlitch')">CloudGlitch</button>
+<script>
+    function encryptText() {
+        const key = document.getElementById('key').value;
+        const text = document.getElementById('text').value;
+        const encrypted = CryptoJS.AES.encrypt(text, key).toString();
+        document.getElementById('result').value = encrypted;
+    }
+
+    function decryptText() {
+        const key = document.getElementById('key').value;
+        const encryptedText = document.getElementById('text').value;
+        const decrypted = CryptoJS.AES.decrypt(encryptedText, key);
+        const originalText = decrypted.toString(CryptoJS.enc.Utf8);
+        document.getElementById('result').value = originalText ? originalText : "Decryption failed. Check your key and input.";
+    }
+</script>
+</center>
+</body>
+</html>
