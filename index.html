@@ -80,7 +80,7 @@
 <button onclick="decryptText()">Decrypt</button>
 
 <h2>Result:</h2>
-<textarea id="result" placeholder="Result will appear here" readonly></textarea>
+<textarea id="result" placeholder="Result will appear here" readonly onclick="copyToClipboard()"></textarea>
 <br><br><br><br>
 <button class="menu" onclick="window.open('https://github.com/CloudGlitch/OpenEnc/blob/main/README.md')">usage</button>
 <button class="menu" style="width:120px;,height:62px;" onclick="window.open('https://cloudglitch.github.io/OpenEnc/privacy.html')">privacy policy</button>
@@ -100,6 +100,20 @@
         const decrypted = CryptoJS.AES.decrypt(encryptedText, key);
         const originalText = decrypted.toString(CryptoJS.enc.Utf8);
         document.getElementById('result').value = originalText ? originalText : "Decryption failed. Check your key and input.";
+    }
+           function copyToClipboard() {
+        const textarea = document.getElementById('result');
+        textarea.select();
+        textarea.setSelectionRange(0, 99999); // For mobile devices
+
+        // Use the Clipboard API for copying text
+        navigator.clipboard.writeText(textarea.value)
+            .then(() => {
+                alert('Text copied to clipboard!');
+            })
+            .catch(err => {
+                alert('Error copying text: ' + err);
+            });
     }
 </script>
 </center>
