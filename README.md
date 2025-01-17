@@ -13,4 +13,4 @@
 - click decrypt
 - click on the result to copy it
 
-note : currently openenc decryption and encryption mostly works only with openenc , this means that encryptions from openenc can only be decrypted with openenc. this feature adds for security.
+note : openenc decryption and encryption mostly works only with openenc , this means that encryptions from openenc can only be decrypted with openenc. this feature adds for security.
